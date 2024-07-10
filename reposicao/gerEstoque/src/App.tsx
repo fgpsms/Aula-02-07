@@ -1,17 +1,16 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-const
+import { useState } from "react";
+import { ListaItens } from "./assets/ListaItens";
+
 function App() {
   const deleteItens = (id: number) => {
+
+  }
   return (
-    <>
-      <ListaItens 
-      //listaItens={[]}, 
-     //</> handleDelItens={deleteItens}
-      />
+    <ListaItens
+    
+    
+    />
   )
 }
 
-export default App
+export default App;
