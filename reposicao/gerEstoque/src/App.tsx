@@ -1,16 +1,28 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import estoque from "./assets/estoque.json";
 import { ListaItens } from "./assets/ListaItens";
+import { ItemEstoque } from "./assets/types";
 
 function App() {
-  const deleteItens = (id: number) => {
+  const [listaItens, setListaItens] = useState<ItemEstoque[]>([]);
+  useEffect(() => {
+    setListaItens(estoque.itens);
+  }, []);
 
+  const deleteItens = (id: number) => {
+    setListaItens((prevItens) =>
+      prevItens.filter((item: ItemEstoque) => item.id !== id)
+    );
+  };
+  const addItem = (item: ItemEstoque) => {
+    setListaItens((prevItens) => [item, ...prevItens])
   }
   return (
-    <ListaItens
-    
-    
-    />
-  )
+    <>
+      <FormularioAdicionarItem adiconarItem={addItem} />
+      <ListaItens listaItens={listaItens} handDelItens={deleteItens} />
+    </>
+  );
 }
 
 export default App;
