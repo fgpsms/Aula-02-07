@@ -5,7 +5,7 @@ interface FormAddItemProps{
     adicionarItem: (item: ItemEstoque) => void
 }
 
-export const FormularioAdicionarItem = {adicionarItem}: FormAddItemProps => {
+export const FormularioAdicionarItem = ({adicionarItem}) => {
     const [novoItem, setNovoItem] = useState<ItemEstoque>({
         id: 0,
         nome:"",
@@ -26,7 +26,7 @@ export const FormularioAdicionarItem = {adicionarItem}: FormAddItemProps => {
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        adicionarItem({..novoItem, id: Math.random()})
+        adicionarItem({...novoItem, id: Math.random()})
         setNovoItem({
             id: 0,
             nome:"",
@@ -34,7 +34,7 @@ export const FormularioAdicionarItem = {adicionarItem}: FormAddItemProps => {
             preco: 0
         })
     }
-    return (<form onSubmit={handleSubmit>
+    return (<form onSubmit={handleSubmit}>
         <div>
             <label> Produto: </label>
             <input
@@ -43,25 +43,23 @@ export const FormularioAdicionarItem = {adicionarItem}: FormAddItemProps => {
             value={novoItem.nome}
             onChange={handleChange} />
         </div>
-        
         <div>
-            <label> Quantidade: </label>
+            <label>Quantidade: </label>
             <input
             type="number"
             name="quantidade"
-            value={novoItem.nome}
+            value={novoItem.quantidade}
             onChange={handleChange} />
         </div>
-        
         <div>
             <label> Preco: </label>
             <input
             type="number"
             name="preco"
-            value={novoItem.nome}
+            value={novoItem.preco}
             onChange={handleChange}
             step="0.01" />
         </div>
-        <button type="submit"> Adicionar <Item></Item></button>
-    })
+        <button type="submit"> Adicionar Item</button>
+    </form>)
 }

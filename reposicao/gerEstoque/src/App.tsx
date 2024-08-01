@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import estoque from "./assets/estoque.json";
 import { ListaItens } from "./assets/ListaItens";
 import { ItemEstoque } from "./assets/types";
+import { FormularioAdicionarItem } from "./assets/FormAdicionarItens";
 
 function App() {
   const [listaItens, setListaItens] = useState<ItemEstoque[]>([]);
@@ -15,8 +16,8 @@ function App() {
     );
   };
   const addItem = (item: ItemEstoque) => {
-    setListaItens((prevItens) => [item, ...prevItens])
-  }
+    setListaItens((prevItens) => [item, ...prevItens]);
+  };
   return (
     <>
       <FormularioAdicionarItem adiconarItem={addItem} />
